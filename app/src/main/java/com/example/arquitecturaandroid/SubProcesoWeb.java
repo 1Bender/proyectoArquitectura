@@ -44,7 +44,7 @@ public class SubProcesoWeb extends AppCompatActivity {
         /*Se necesita un hilo asíncrono*/
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
-        /*Necesitamos recuperar datos, usamos Callable*/
+        /*Defininos tarea. Necesitamos recuperar datos, usamos Callable*/
         Callable<String> tarea= ()->{
             HttpURLConnection conexion=null;
             conexion = conectar(usuario, contrasena);

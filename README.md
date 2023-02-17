@@ -1,2 +1,0 @@
-# proyectoArquitectura
-código proyecto
