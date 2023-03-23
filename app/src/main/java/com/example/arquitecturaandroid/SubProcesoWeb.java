@@ -1,5 +1,6 @@
 package com.example.arquitecturaandroid;
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +45,7 @@ public class SubProcesoWeb extends AppCompatActivity {
         /*Se necesita un hilo asíncrono*/
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
+        Log.i("2", "Definicion tarea");
         /*Defininos tarea. Necesitamos recuperar datos, usamos Callable*/
         Callable<String> tarea= ()->{
             HttpURLConnection conexion=null;
@@ -52,6 +54,7 @@ public class SubProcesoWeb extends AppCompatActivity {
             return txtJson;
         };
 
+        Log.i("2", "Inicio del hilo asincrono");
         /*Iniciamos la tarea*/
         Future<String> future = executor.submit(tarea);
 
@@ -79,15 +82,16 @@ public class SubProcesoWeb extends AppCompatActivity {
         String parametros;
 
         /*creamos la sentencia con los parámetros para montar el URI*/
-        parametros = "user=" + usuario + "&pas=" + pass;
+        parametros = "name=" + usuario + "&pass=" + pass;
 
+        Log.i("3", "Establecindo conexion con url");
         /*Establecemos conexión con la URL*/
-        URL url = new URL("http://192.168.1.108/users.php");
+        URL url = new URL("http://192.168.1.116:8080/acces/acces");
         HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
 
 
         /*Cambiamos el método para enviar los parámetros, y los enviamos*/
-
+        Log.i("4", "Enviando parametros");
         try {
             conexion.setRequestMethod("POST");
             conexion.setDoOutput(true);
@@ -95,7 +99,7 @@ public class SubProcesoWeb extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        Log.i("5", "Retornando conexion");
         /*Devolvemos el objeto conexión, con la conexión*/
         return conexion;
     }
@@ -109,8 +113,8 @@ public class SubProcesoWeb extends AppCompatActivity {
     public String logIn(@NonNull HttpURLConnection conect) throws IOException{
 
         String respuesta = "";
-        String texto;
 
+        Log.i("5", "Revisando respuesta");
         /*Revisamos correcta conexión con webservice*/
         if(conect.getResponseCode()==200){
 
@@ -132,25 +136,33 @@ public class SubProcesoWeb extends AppCompatActivity {
      * @param context
      * @throws JSONException
      */
-    public void gestionRespuesta(String resp, Context context) throws JSONException {
+    public String gestionRespuesta(String resp, Context context) throws JSONException {
 
         String texto;
+        String id =null;
 
         /*Comprobamos la respuesta del webservice, podrá ser false si no existe coincidencia y
          * en caso de ser distinto de false habrá coincidencia*/
-        if(resp.contains("false")){
+
+        Log.i("Contenido de la respuesta:", resp);
+
+        if(resp.contains("Concedido")){
+
+            texto = context.getString(R.string.Permitido);
+            Toast toast = Toast.makeText(context, texto, Toast.LENGTH_LONG);
+            toast.show();
+            id= resp.substring(8);
+
+
+        }else{
 
             texto = context.getString(R.string.Denegado);
             Toast toast = Toast.makeText(context, texto, Toast.LENGTH_LONG);
             toast.show();
-        }else{
-            JSONObject objetoJson = new JSONObject(resp);
 
-            /*Extraemos el valor del atributo nombre del objeto JSON*/
-            texto = objetoJson.getString("nombre");
-
-            System.out.println(texto);
         }
+
+       return id;
     }
 
 
