@@ -4,7 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuPrincipal"
-    android:background="#a9cce3">
+    tools:context=".controllers.MenuPrincipal"
+    android:background="@drawable/fondoescolar">
+
+
+    <TextView
+        android:id="@+id/nombreProfe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del profesor"
+        android:textColor="#F39C12"
+        android:textStyle="bold"
+        android:textSize="60px"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50px"/>
+
+    <Spinner
+        android:id="@+id/alumnos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nombreProfe"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
