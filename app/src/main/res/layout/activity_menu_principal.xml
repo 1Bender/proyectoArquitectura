@@ -19,7 +19,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50px"/>
+        android:layout_marginTop="40dp"/>
 
     <Spinner
         android:id="@+id/alumnos"
@@ -27,7 +27,44 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/nombreProfe"/>
+
+    <Button
+        android:id="@+id/btnEvaluar"
+        android:layout_marginTop="140dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/alumnos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/btnmenu"
+        android:text="Evaluar"
+        android:onClick="activityEvaluar"/>
+
+    <Button
+        android:id="@+id/btnDatos"
+        android:layout_marginTop="45dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnEvaluar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/btnmenu"
+        android:text="Datos"
+        android:onClick="activityDatos"/>
+
+    <Button
+        android:id="@+id/btnNotas"
+        android:layout_marginTop="45dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnDatos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/btnmenu"
+        android:text="Notas"
+        android:onClick="activityCalificaciones"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

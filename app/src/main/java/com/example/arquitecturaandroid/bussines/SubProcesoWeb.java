@@ -5,8 +5,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.arquitecturaandroid.DTO.Usuario;
 import com.example.arquitecturaandroid.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -20,6 +22,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import retrofit2.Callback;
+
 /**
  * Android no permite ejecutar operaciones de red en el hilo principal de la aplicación. En esta
  * clase usaremos ExecutorService para crear hilos asíncronos. También detendremos la ejecución del
@@ -30,6 +34,8 @@ public class SubProcesoWeb extends AppCompatActivity {
     /*Atributos de la clase*/
     String txtJson;
     ArrayList<String> txtJsonList = new ArrayList<>();
+
+    private ApiController mService;
 
     /*Constructor*/
     public SubProcesoWeb(){}
@@ -170,103 +176,5 @@ public class SubProcesoWeb extends AppCompatActivity {
 
        return id;
     }
-
-    /**
-     * Metodo con tarea asincorna que recuperara todos los alumnos que tutoriza el profesor, para llenar el
-     * spinners seleccionable
-     * @param id
-     * @return
-     * @throws ExecutionException
-     * @throws InterruptedException
-     */
-    public ArrayList misAlumnos(String id) throws ExecutionException, InterruptedException {
-
-        ArrayList<String> listaDevuelta = new ArrayList<>();
-
-        /*Se necesita un hilo asíncrono*/
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-
-
-        /*Defininos tarea. Necesitamos recuperar datos, usamos Callable*/
-        Callable<ArrayList> tareaAlumno= ()->{
-            HttpURLConnection conexion=null;
-            conexion = conectarAlumnos(id);
-            txtJsonList = estadoHttpListado(conexion);
-            return txtJsonList;
-        };
-
-        Log.i("Recuperando alumnos", "Inicio del hilo asincrono");
-        /*Iniciamos la tarea*/
-        Future<ArrayList> future = executor.submit(tareaAlumno);
-
-        /*El hilo principal esperara a obtener el resultado*/
-        listaDevuelta = future.get();
-
-        /*Cerramos executor cuando finalice la tarea*/
-        executor.shutdown();
-
-        
-
-        return listaDevuelta;
-    }
-
-    public HttpURLConnection conectarAlumnos(String id) throws IOException, InterruptedException {
-
-        String parametros;
-
-        /*creamos la sentencia con los parámetros para montar el URI*/
-        parametros = "id=" + id;
-
-        Log.i("Proceso alumnos", "Establecindo conexion con url");
-
-        /*Establecemos conexión con la URL*/
-        URL url = new URL("http://192.168.1.116:8080/acces/students");
-        HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-
-
-        /*Cambiamos el método para enviar los parámetros, y los enviamos*/
-        Log.i("Recuperando alumnos", "Enviando parametros");
-        try {
-            conexion.setRequestMethod("POST");
-            conexion.setDoOutput(true);
-            conexion.getOutputStream().write(parametros.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Log.i("Recuperando alumnos", "Retornando conexion");
-
-
-        /*Devolvemos el objeto conexión, con la conexión*/
-        return conexion;
-    }
-
-    /**
-     * Metodo que nos permite gestionar la devolución de una lista dinamica.
-     * @param conect
-     * @return
-     * @throws IOException
-     */
-    static ArrayList estadoHttpListado(@NonNull HttpURLConnection conect) throws IOException{
-
-        ArrayList<String> respuesta = new ArrayList<>();
-
-        Log.i("5", "Revisando respuesta");
-
-        /*Revisamos correcta conexión con webservice*/
-        if(conect.getResponseCode()==200){
-
-            /*Leemos datos y guardamos en variable para devolver*/
-            Scanner lectura = new Scanner(conect.getInputStream());
-            while(lectura.hasNext()){
-                respuesta.add(lectura.next());
-            }
-        }
-        Log.i("Lista obtenida", respuesta.get(0));
-
-        return respuesta;
-    }
-
-
 
 }

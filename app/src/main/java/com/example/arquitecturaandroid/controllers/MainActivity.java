@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i=new Intent(MainActivity.this, MenuPrincipal.class);
         i.putExtra("identificador", id);
+        i.putExtra("nombre", usuario.getText().toString());
 
         Log.i("valor antes de cambio pantalla:", id);
 
