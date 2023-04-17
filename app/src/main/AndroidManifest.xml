@@ -16,14 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Calificaciones"
-            android:exported="false" />
+            android:name=".controllers.Calificaciones"
+            android:exported="true" />
         <activity
-            android:name=".Datos"
-            android:exported="false" />
+            android:name=".controllers.Datos"
+            android:exported="true" />
         <activity
-            android:name=".Evaluar"
-            android:exported="false" />
+            android:name=".controllers.Evaluar"
+            android:exported="true" />
         <activity
             android:name=".controllers.MainActivity"
             android:exported="true">

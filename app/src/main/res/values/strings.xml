@@ -2,4 +2,5 @@
     <string name="app_name">ArquitecturaAndroid</string>
     <string name="Denegado">Acceso denegado.\nRevise los datos introducidos.</string>
     <string name="Permitido">Acceso concedido.\nBienvenido!</string>
+    <string name="calificacion">Puede introducir los resultados de las pruebas de las diferentes materias</string>
 </resources>

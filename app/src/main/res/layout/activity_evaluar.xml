@@ -4,6 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.Evaluar">
+    tools:context=".controllers.Evaluar"
+    android:background="@drawable/fondoescolar">
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calificacion"
+        android:textColor="#555454"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/matematicas"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Matemáticas"
+        android:textColor="#FF5722"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        android:layout_marginTop="80dp"/>
+
+    <EditText
+        android:id="@+id/notaMat"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/matematicas"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        android:layout_marginTop="70dp"
+        android:hint="Nota"/>
+
+    <TextView
+        android:id="@+id/dibujo"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Dibujo"
+        android:textColor="#FF5722"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matematicas"
+        android:layout_marginTop="80dp"/>
+
+    <EditText
+        android:id="@+id/notDib"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="Nota"
+        app:layout_constraintLeft_toRightOf="@id/dibujo"
+        app:layout_constraintTop_toBottomOf="@id/notaMat" />
+
+    <TextView
+        android:id="@+id/social"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Social"
+        android:textColor="#FF5722"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dibujo"
+        android:layout_marginTop="80dp"/>
+
+    <EditText
+        android:id="@+id/notSocial"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:hint="Nota"
+        app:layout_constraintLeft_toRightOf="@id/social"
+        app:layout_constraintTop_toBottomOf="@id/notDib" />
+
+    <TextView
+        android:id="@+id/lengua"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Lengua"
+        android:textColor="#FF5722"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/social"
+        android:layout_marginTop="80dp" />
+
+    <EditText
+        android:id="@+id/notLengua"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="Nota"
+        app:layout_constraintLeft_toRightOf="@id/social"
+        app:layout_constraintTop_toBottomOf="@id/notSocial" />
+
+    <Button
+        android:id="@+id/btnDatos"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/btnmenu"
+        android:text="Subir"
+        android:onClick="almacenarNotas"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

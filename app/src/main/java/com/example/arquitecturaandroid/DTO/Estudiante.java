@@ -1,13 +1,19 @@
 package com.example.arquitecturaandroid.DTO;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Estudiante {
 
-    public class Application {
         private String name;
         private String special;
+        @SerializedName("id_boletin")
+        @Expose
         private String id;
         private String city;
-        private float phone;
+        private Integer phone;
+        @SerializedName("parents_name")
+        @Expose
         private String padres;
 
 
@@ -29,7 +35,7 @@ public class Estudiante {
             return city;
         }
 
-        public float getPhone() {
+        public Integer getPhone() {
             return phone;
         }
 
@@ -55,7 +61,7 @@ public class Estudiante {
             this.city = city;
         }
 
-        public void setPhone( float phone ) {
+        public void setPhone( Integer phone ) {
             this.phone = phone;
         }
 
@@ -63,4 +69,4 @@ public class Estudiante {
             this.padres = padres;
         }
     }
-}
+

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,8 +32,9 @@ public class MenuPrincipal extends AppCompatActivity {
 
     Spinner alumnosTutorizados;
     TextView nombreProfesor;
+    TextView aula;
 
-    List<Usuario> userList;
+    List<Usuario> responseList;
 
 
 
@@ -48,6 +50,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
         /*Definimos las variables con los ids de los elementos*/
         alumnosTutorizados = findViewById(R.id.alumnos);
+        aula = findViewById(R.id.aula);
         nombreProfesor = findViewById(R.id.nombreProfe);
         nombreProfesor.setText(this.getIntent().getExtras().getString("nombre"));
 
@@ -77,12 +80,15 @@ public class MenuPrincipal extends AppCompatActivity {
                     Log.i("Respuesta fallida", "Sin respuesta");
                     return;
                 }
+                /*Obtenemos la respuesta*/
+                responseList = response.body();
+                Log.i("Respuesta obtenida", responseList.get(0).getStudents().toString());
 
-                userList = response.body();
-                Log.i("Respuesta obtenida", userList.get(0).getStudents().toString());
-
+                /*Pasamos la lista al spinner desplegable*/
                 alumnosTutorizados.setAdapter(new ArrayAdapter<String>(MenuPrincipal.this,
-                        android.R.layout.simple_spinner_item, userList.get(0).getStudents()));
+                        android.R.layout.simple_spinner_item, responseList.get(0).getStudents()));
+
+                aula.setText("Aula: "+ responseList.get(0).getClassroom());
 
 
 
@@ -98,10 +104,13 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
-    public void activityEvaluar(){
+
+
+    public void activityEvaluar(View view){
 
         Intent i=new Intent(MenuPrincipal.this, Evaluar.class);
-        i.putExtra("identificador", id);
+        String alumnoSpinner = alumnosTutorizados.getSelectedItem().toString();
+        i.putExtra("alumno seleccionado", alumnoSpinner);
 
         Log.i("Cambiando intent", "Evaluar");
 
@@ -109,10 +118,11 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
-    public void activityDatos(){
+    public void activityDatos(View view){
 
         Intent i=new Intent(MenuPrincipal.this, Datos.class);
-        i.putExtra("identificador", id);
+        String alumnoSpinner = alumnosTutorizados.getSelectedItem().toString();
+        i.putExtra("alumno seleccionado", alumnoSpinner);
 
 
         Log.i("Cambiando intent", "Datos");
@@ -121,10 +131,11 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
-    public void activityCalificaciones(){
+    public void activityCalificaciones(View view){
 
         Intent i=new Intent(MenuPrincipal.this, Calificaciones.class);
-        i.putExtra("identificador", id);
+        String alumnoSpinner = alumnosTutorizados.getSelectedItem().toString();
+        i.putExtra("alumno seleccionado", alumnoSpinner);
 
 
         Log.i("Cambiando intent", "Calificaciones");

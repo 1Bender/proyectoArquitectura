@@ -20,6 +20,10 @@ public class Usuario {
     @Expose
     private List<String> students;
 
+    @SerializedName("classroom")
+    @Expose
+    private String classroom;
+
     public String getId() {
         return id;
     }
@@ -52,4 +56,11 @@ public class Usuario {
         this.students = students;
     }
 
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
 }
