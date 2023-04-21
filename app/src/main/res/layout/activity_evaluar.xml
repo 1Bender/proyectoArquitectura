@@ -18,7 +18,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp" />
 
     <TextView
         android:id="@+id/matematicas"
@@ -40,7 +40,8 @@
         app:layout_constraintLeft_toRightOf="@id/matematicas"
         app:layout_constraintTop_toBottomOf="@id/titulo"
         android:layout_marginTop="70dp"
-        android:hint="Nota"/>
+        android:hint="Nota"
+        android:inputType="number|numberDecimal|numberSigned"/>
 
     <TextView
         android:id="@+id/dibujo"
@@ -56,13 +57,14 @@
         android:layout_marginTop="80dp"/>
 
     <EditText
-        android:id="@+id/notDib"
+        android:id="@+id/notaDib"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:hint="Nota"
         app:layout_constraintLeft_toRightOf="@id/dibujo"
-        app:layout_constraintTop_toBottomOf="@id/notaMat" />
+        app:layout_constraintTop_toBottomOf="@id/notaMat"
+        android:inputType="number|numberDecimal|numberSigned"/>
 
     <TextView
         android:id="@+id/social"
@@ -78,13 +80,14 @@
         android:layout_marginTop="80dp"/>
 
     <EditText
-        android:id="@+id/notSocial"
+        android:id="@+id/notaSoci"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:hint="Nota"
         app:layout_constraintLeft_toRightOf="@id/social"
-        app:layout_constraintTop_toBottomOf="@id/notDib" />
+        app:layout_constraintTop_toBottomOf="@id/notaDib"
+        android:inputType="number|numberDecimal|numberSigned"/>
 
     <TextView
         android:id="@+id/lengua"
@@ -106,7 +109,8 @@
         android:layout_marginTop="60dp"
         android:hint="Nota"
         app:layout_constraintLeft_toRightOf="@id/social"
-        app:layout_constraintTop_toBottomOf="@id/notSocial" />
+        app:layout_constraintTop_toBottomOf="@id/notaSoci"
+        android:inputType="number|numberDecimal|numberSigned"/>
 
     <Button
         android:id="@+id/btnDatos"

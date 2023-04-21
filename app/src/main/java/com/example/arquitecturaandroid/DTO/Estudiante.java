@@ -7,13 +7,10 @@ public class Estudiante {
 
         private String name;
         private String special;
-        @SerializedName("id_boletin")
-        @Expose
         private String id;
         private String city;
         private Integer phone;
-        @SerializedName("parents_name")
-        @Expose
+
         private String padres;
 
 

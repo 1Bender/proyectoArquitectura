@@ -47,12 +47,12 @@
         android:layout_marginTop="80dp"/>
 
     <TextView
-        android:id="@+id/notaMat"
+        android:id="@+id/medMat"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="80dp"
         android:hint="Nota"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/matematicas"
         app:layout_constraintTop_toBottomOf="@id/explicacion" />
 
@@ -70,14 +70,14 @@
         android:layout_marginTop="80dp"/>
 
     <TextView
-        android:id="@+id/notDib"
+        android:id="@+id/medDib"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:hint="Nota"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/dibujo"
-        app:layout_constraintTop_toBottomOf="@id/notaMat" />
+        app:layout_constraintTop_toBottomOf="@id/medMat" />
 
     <TextView
         android:id="@+id/social"
@@ -93,14 +93,14 @@
         android:layout_marginTop="80dp"/>
 
     <TextView
-        android:id="@+id/notSocial"
+        android:id="@+id/medSoci"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="80dp"
         android:hint="Nota"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/social"
-        app:layout_constraintTop_toBottomOf="@id/notDib" />
+        app:layout_constraintTop_toBottomOf="@id/medDib" />
 
     <TextView
         android:id="@+id/lengua"
@@ -116,14 +116,14 @@
         android:layout_marginTop="80dp" />
 
     <TextView
-        android:id="@+id/notLengua"
+        android:id="@+id/medLengua"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:hint="Nota"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/social"
-        app:layout_constraintTop_toBottomOf="@id/notSocial" />
+        app:layout_constraintTop_toBottomOf="@id/medSoci" />
 
 
 

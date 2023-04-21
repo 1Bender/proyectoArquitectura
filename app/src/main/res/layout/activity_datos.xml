@@ -47,7 +47,7 @@
         android:layout_marginTop="80dp"/>
 
     <TextView
-        android:id="@+id/notaMat"
+        android:id="@+id/localidad"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -70,14 +70,14 @@
         android:layout_marginTop="80dp"/>
 
     <TextView
-        android:id="@+id/notDib"
+        android:id="@+id/padres"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:hint="Nota"
         android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/dibujo"
-        app:layout_constraintTop_toBottomOf="@id/notaMat" />
+        app:layout_constraintTop_toBottomOf="@id/localidad" />
 
     <TextView
         android:id="@+id/social"
@@ -93,14 +93,14 @@
         android:layout_marginTop="80dp"/>
 
     <TextView
-        android:id="@+id/notSocial"
+        android:id="@+id/contacto"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:hint="Nota"
         android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/social"
-        app:layout_constraintTop_toBottomOf="@id/notDib" />
+        app:layout_constraintTop_toBottomOf="@id/padres" />
 
     <TextView
         android:id="@+id/lengua"
@@ -116,14 +116,14 @@
         android:layout_marginTop="80dp" />
 
     <TextView
-        android:id="@+id/notLengua"
+        android:id="@+id/personal"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:hint="Nota"
         android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/lengua"
-        app:layout_constraintTop_toBottomOf="@id/notSocial" />
+        app:layout_constraintTop_toBottomOf="@id/contacto" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

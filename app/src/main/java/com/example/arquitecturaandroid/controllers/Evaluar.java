@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.arquitecturaandroid.DTO.Estudiante;
 import com.example.arquitecturaandroid.DTO.Notas;
-import com.example.arquitecturaandroid.DTO.Usuario;
 import com.example.arquitecturaandroid.R;
 import com.example.arquitecturaandroid.bussines.ApiController;
 import com.example.arquitecturaandroid.bussines.Utils;
@@ -45,10 +43,10 @@ public class Evaluar extends AppCompatActivity {
         setContentView(R.layout.activity_evaluar);
 
         /*Definimos variables con los id de los elementos del layout*/
-        notaDib = findViewById(R.id.notDib);
+        notaDib = findViewById(R.id.notaDib);
         notaLeng = findViewById(R.id.notLengua);
         notaMat = findViewById(R.id.notaMat);
-        notaSoci = findViewById(R.id.notSocial);
+        notaSoci = findViewById(R.id.notaSoci);
         alumnoSeleccionado = this.getIntent().getExtras().getString("alumno seleccionado");
         onGetIdBoletin();
     }
@@ -64,6 +62,8 @@ public class Evaluar extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        Log.i("nombre alumno seleccionado", alumnoSeleccionado);
+
         ApiController apiController = retrofit.create(ApiController.class);
         Call<List<Estudiante>> call= apiController.getIdBoletin(alumnoSeleccionado);
 
@@ -77,8 +77,8 @@ public class Evaluar extends AppCompatActivity {
                 }
                 /*Obtenemos la respuesta*/
                 responseList = response.body();
-                Log.i("Respuesta obtenida",responseList.get(0).getId());
 
+                Log.i("Id obtenido", responseList.get(0).getId());
                 idBoletinNotas = responseList.get(0).getId();
 
             }
@@ -107,7 +107,7 @@ public class Evaluar extends AppCompatActivity {
     private String onPostNotas(){
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.116:8080/profile/")
+                .baseUrl("http://192.168.1.116:8080/notas/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -118,7 +118,7 @@ public class Evaluar extends AppCompatActivity {
         Double dibujo = Utils.getFloat(notaDib.getText().toString(), this);
         Double social = Utils.getFloat(notaSoci.getText().toString(), this);
 
-        if(mates==0.0 || lengua==0.0 || dibujo==0.0 || social==0.0){
+        if(mates==0.001 || lengua==0.001 || dibujo==0.001 || social==0.001){
 
 
             return "Error al guardar, algún valor introducido no es numérico";
@@ -134,7 +134,7 @@ public class Evaluar extends AppCompatActivity {
             public void onResponse(Call<List<Notas>> call, Response<List<Notas>> response) {
 
                 if(!response.isSuccessful()){
-                    Log.i("Respuesta fallida", "Sin respuesta");
+                    Log.e("Respuesta fallida", "El codigo HTTP no es el esperado");
                     return;
                 }
 
@@ -143,7 +143,7 @@ public class Evaluar extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Notas>> call, Throwable t) {
-                Log.i("Error al traer los datos", t.getMessage());
+                Log.i("Sin respuesta", "No esperada respuesta en Json al guardar, correcto");
 
             }
         });

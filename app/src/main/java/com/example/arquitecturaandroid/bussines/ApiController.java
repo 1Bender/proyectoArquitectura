@@ -20,5 +20,8 @@ public interface ApiController {
     Double social, @Query("notaLeng") Double lengua, @Query("notaDib") Double dibujo);
 
     @GET("student")
-    Call <List<Estudiante>> getIdBoletin(@Query("neme") String nombre);
+    Call <List<Estudiante>> getIdBoletin(@Query("name") String nombre);
+
+    @GET("student")
+    Call <List<Notas>> getnotes(@Query("id") String id);
 }
